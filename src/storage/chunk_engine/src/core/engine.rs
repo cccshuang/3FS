@@ -676,7 +676,7 @@ impl Engine {
             let entry = self.meta_cache.entry_by_ref(chunk_id);
             self.meta_store
                 .remove_mut(&chunk_id, &meta, &mut write_batch)?;
-             entry.push(entry);
+             entries.push(entry);
         }
         if !write_batch.is_empty() {
             self.meta_store.write(write_batch, true)?;
